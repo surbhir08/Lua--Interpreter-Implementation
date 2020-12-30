@@ -1,0 +1,2611 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> chunk
+Rule 1     chunk -> command_list
+Rule 2     command_list -> command command_list
+Rule 3     command_list -> empty
+Rule 4     command -> ID = exp
+Rule 5     command -> FUNCTION ID ( explist ) command_list END
+Rule 6     command -> FUNCTION ID expassign
+Rule 7     command -> ID ( actual_arg_exp )
+Rule 8     command -> WHILE ( exp ) command
+Rule 9     command -> IF ( exp ) THEN command_list ELSE command_list END
+Rule 10    command -> RETURN exp_list
+Rule 11    command -> DO command_list END
+Rule 12    command -> FOR command , exp command
+Rule 13    command -> PRINT ( exp )
+Rule 14    command -> { command_list }
+Rule 15    actual_arg_exp -> actual_args
+Rule 16    actual_arg_exp -> empty
+Rule 17    actual_args -> exp , actual_args
+Rule 18    actual_args -> exp
+Rule 19    expassign -> empty
+Rule 20    expassign -> = exp
+Rule 21    explist -> lexp
+Rule 22    explist -> empty
+Rule 23    lexp -> ID
+Rule 24    lexp -> ID , lexp
+Rule 25    exp_list -> exp
+Rule 26    exp_list -> empty
+Rule 27    exp -> NUMBER
+Rule 28    exp -> ID
+Rule 29    exp -> exp PLUS exp
+Rule 30    exp -> exp MINUS exp
+Rule 31    exp -> exp TIMES exp
+Rule 32    exp -> exp DIVIDE exp
+Rule 33    exp -> exp LESSEQUAL exp
+Rule 34    exp -> exp GREATEREQUAL exp
+Rule 35    exp -> exp LESS exp
+Rule 36    exp -> exp GREATER exp
+Rule 37    exp -> exp EQUAL exp
+Rule 38    exp -> exp NOTEQUAL exp
+Rule 39    exp -> MINUS exp
+Rule 40    exp -> ( exp )
+Rule 41    exp -> ID ( actual_arg_exp )
+Rule 42    empty -> <empty>
+
+Terminals, with rules where they appear
+
+(                    : 5 7 8 9 13 40 41
+)                    : 5 7 8 9 13 40 41
+,                    : 12 17 24
+=                    : 4 20
+DIVIDE               : 32
+DO                   : 11
+ELSE                 : 9
+END                  : 5 9 11
+EQUAL                : 37
+FOR                  : 12
+FUNCTION             : 5 6
+GREATER              : 36
+GREATEREQUAL         : 34
+ID                   : 4 5 6 7 23 24 28 41
+IF                   : 9
+LESS                 : 35
+LESSEQUAL            : 33
+MINUS                : 30 39
+NOTEQUAL             : 38
+NUMBER               : 27
+PLUS                 : 29
+PRINT                : 13
+RETURN               : 10
+THEN                 : 9
+TIMES                : 31
+WHILE                : 8
+error                : 
+{                    : 14
+}                    : 14
+
+Nonterminals, with rules where they appear
+
+actual_arg_exp       : 7 41
+actual_args          : 15 17
+chunk                : 0
+command              : 2 8 12 12
+command_list         : 1 2 5 9 9 11 14
+empty                : 3 16 19 22 26
+exp                  : 4 8 9 12 13 17 18 20 25 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 40
+exp_list             : 10
+expassign            : 6
+explist              : 5
+lexp                 : 21 24
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . chunk
+    (1) chunk -> . command_list
+    (2) command_list -> . command command_list
+    (3) command_list -> . empty
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+    (42) empty -> .
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+    $end            reduce using rule 42 (empty -> .)
+
+    chunk                          shift and go to state 1
+    command_list                   shift and go to state 2
+    command                        shift and go to state 3
+    empty                          shift and go to state 4
+
+state 1
+
+    (0) S' -> chunk .
+
+
+
+state 2
+
+    (1) chunk -> command_list .
+
+    $end            reduce using rule 1 (chunk -> command_list .)
+
+
+state 3
+
+    (2) command_list -> command . command_list
+    (2) command_list -> . command command_list
+    (3) command_list -> . empty
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+    (42) empty -> .
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+    $end            reduce using rule 42 (empty -> .)
+    END             reduce using rule 42 (empty -> .)
+    }               reduce using rule 42 (empty -> .)
+    ELSE            reduce using rule 42 (empty -> .)
+
+    command                        shift and go to state 3
+    command_list                   shift and go to state 14
+    empty                          shift and go to state 4
+
+state 4
+
+    (3) command_list -> empty .
+
+    $end            reduce using rule 3 (command_list -> empty .)
+    END             reduce using rule 3 (command_list -> empty .)
+    }               reduce using rule 3 (command_list -> empty .)
+    ELSE            reduce using rule 3 (command_list -> empty .)
+
+
+state 5
+
+    (4) command -> ID . = exp
+    (7) command -> ID . ( actual_arg_exp )
+
+    =               shift and go to state 15
+    (               shift and go to state 16
+
+
+state 6
+
+    (5) command -> FUNCTION . ID ( explist ) command_list END
+    (6) command -> FUNCTION . ID expassign
+
+    ID              shift and go to state 17
+
+
+state 7
+
+    (8) command -> WHILE . ( exp ) command
+
+    (               shift and go to state 18
+
+
+state 8
+
+    (9) command -> IF . ( exp ) THEN command_list ELSE command_list END
+
+    (               shift and go to state 19
+
+
+state 9
+
+    (10) command -> RETURN . exp_list
+    (25) exp_list -> . exp
+    (26) exp_list -> . empty
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+    (42) empty -> .
+
+  ! shift/reduce conflict for ID resolved as shift
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+    FUNCTION        reduce using rule 42 (empty -> .)
+    WHILE           reduce using rule 42 (empty -> .)
+    IF              reduce using rule 42 (empty -> .)
+    RETURN          reduce using rule 42 (empty -> .)
+    DO              reduce using rule 42 (empty -> .)
+    FOR             reduce using rule 42 (empty -> .)
+    PRINT           reduce using rule 42 (empty -> .)
+    {               reduce using rule 42 (empty -> .)
+    $end            reduce using rule 42 (empty -> .)
+    END             reduce using rule 42 (empty -> .)
+    }               reduce using rule 42 (empty -> .)
+    ELSE            reduce using rule 42 (empty -> .)
+    ,               reduce using rule 42 (empty -> .)
+
+  ! ID              [ reduce using rule 42 (empty -> .) ]
+
+    exp_list                       shift and go to state 20
+    exp                            shift and go to state 21
+    empty                          shift and go to state 22
+
+state 10
+
+    (11) command -> DO . command_list END
+    (2) command_list -> . command command_list
+    (3) command_list -> . empty
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+    (42) empty -> .
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+    END             reduce using rule 42 (empty -> .)
+
+    command_list                   shift and go to state 27
+    command                        shift and go to state 3
+    empty                          shift and go to state 4
+
+state 11
+
+    (12) command -> FOR . command , exp command
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+
+    command                        shift and go to state 28
+
+state 12
+
+    (13) command -> PRINT . ( exp )
+
+    (               shift and go to state 29
+
+
+state 13
+
+    (14) command -> { . command_list }
+    (2) command_list -> . command command_list
+    (3) command_list -> . empty
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+    (42) empty -> .
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+    }               reduce using rule 42 (empty -> .)
+
+    command_list                   shift and go to state 30
+    command                        shift and go to state 3
+    empty                          shift and go to state 4
+
+state 14
+
+    (2) command_list -> command command_list .
+
+    $end            reduce using rule 2 (command_list -> command command_list .)
+    END             reduce using rule 2 (command_list -> command command_list .)
+    }               reduce using rule 2 (command_list -> command command_list .)
+    ELSE            reduce using rule 2 (command_list -> command command_list .)
+
+
+state 15
+
+    (4) command -> ID = . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 31
+
+state 16
+
+    (7) command -> ID ( . actual_arg_exp )
+    (15) actual_arg_exp -> . actual_args
+    (16) actual_arg_exp -> . empty
+    (17) actual_args -> . exp , actual_args
+    (18) actual_args -> . exp
+    (42) empty -> .
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    )               reduce using rule 42 (empty -> .)
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    actual_arg_exp                 shift and go to state 32
+    actual_args                    shift and go to state 33
+    empty                          shift and go to state 34
+    exp                            shift and go to state 35
+
+state 17
+
+    (5) command -> FUNCTION ID . ( explist ) command_list END
+    (6) command -> FUNCTION ID . expassign
+    (19) expassign -> . empty
+    (20) expassign -> . = exp
+    (42) empty -> .
+
+    (               shift and go to state 36
+    =               shift and go to state 39
+    ID              reduce using rule 42 (empty -> .)
+    FUNCTION        reduce using rule 42 (empty -> .)
+    WHILE           reduce using rule 42 (empty -> .)
+    IF              reduce using rule 42 (empty -> .)
+    RETURN          reduce using rule 42 (empty -> .)
+    DO              reduce using rule 42 (empty -> .)
+    FOR             reduce using rule 42 (empty -> .)
+    PRINT           reduce using rule 42 (empty -> .)
+    {               reduce using rule 42 (empty -> .)
+    $end            reduce using rule 42 (empty -> .)
+    END             reduce using rule 42 (empty -> .)
+    }               reduce using rule 42 (empty -> .)
+    ELSE            reduce using rule 42 (empty -> .)
+    ,               reduce using rule 42 (empty -> .)
+
+    expassign                      shift and go to state 37
+    empty                          shift and go to state 38
+
+state 18
+
+    (8) command -> WHILE ( . exp ) command
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 40
+
+state 19
+
+    (9) command -> IF ( . exp ) THEN command_list ELSE command_list END
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 41
+
+state 20
+
+    (10) command -> RETURN exp_list .
+
+    ID              reduce using rule 10 (command -> RETURN exp_list .)
+    FUNCTION        reduce using rule 10 (command -> RETURN exp_list .)
+    WHILE           reduce using rule 10 (command -> RETURN exp_list .)
+    IF              reduce using rule 10 (command -> RETURN exp_list .)
+    RETURN          reduce using rule 10 (command -> RETURN exp_list .)
+    DO              reduce using rule 10 (command -> RETURN exp_list .)
+    FOR             reduce using rule 10 (command -> RETURN exp_list .)
+    PRINT           reduce using rule 10 (command -> RETURN exp_list .)
+    {               reduce using rule 10 (command -> RETURN exp_list .)
+    $end            reduce using rule 10 (command -> RETURN exp_list .)
+    END             reduce using rule 10 (command -> RETURN exp_list .)
+    }               reduce using rule 10 (command -> RETURN exp_list .)
+    ELSE            reduce using rule 10 (command -> RETURN exp_list .)
+    ,               reduce using rule 10 (command -> RETURN exp_list .)
+
+
+state 21
+
+    (25) exp_list -> exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    ID              reduce using rule 25 (exp_list -> exp .)
+    FUNCTION        reduce using rule 25 (exp_list -> exp .)
+    WHILE           reduce using rule 25 (exp_list -> exp .)
+    IF              reduce using rule 25 (exp_list -> exp .)
+    RETURN          reduce using rule 25 (exp_list -> exp .)
+    DO              reduce using rule 25 (exp_list -> exp .)
+    FOR             reduce using rule 25 (exp_list -> exp .)
+    PRINT           reduce using rule 25 (exp_list -> exp .)
+    {               reduce using rule 25 (exp_list -> exp .)
+    $end            reduce using rule 25 (exp_list -> exp .)
+    END             reduce using rule 25 (exp_list -> exp .)
+    }               reduce using rule 25 (exp_list -> exp .)
+    ELSE            reduce using rule 25 (exp_list -> exp .)
+    ,               reduce using rule 25 (exp_list -> exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 22
+
+    (26) exp_list -> empty .
+
+    ID              reduce using rule 26 (exp_list -> empty .)
+    FUNCTION        reduce using rule 26 (exp_list -> empty .)
+    WHILE           reduce using rule 26 (exp_list -> empty .)
+    IF              reduce using rule 26 (exp_list -> empty .)
+    RETURN          reduce using rule 26 (exp_list -> empty .)
+    DO              reduce using rule 26 (exp_list -> empty .)
+    FOR             reduce using rule 26 (exp_list -> empty .)
+    PRINT           reduce using rule 26 (exp_list -> empty .)
+    {               reduce using rule 26 (exp_list -> empty .)
+    $end            reduce using rule 26 (exp_list -> empty .)
+    END             reduce using rule 26 (exp_list -> empty .)
+    }               reduce using rule 26 (exp_list -> empty .)
+    ELSE            reduce using rule 26 (exp_list -> empty .)
+    ,               reduce using rule 26 (exp_list -> empty .)
+
+
+state 23
+
+    (27) exp -> NUMBER .
+
+    PLUS            reduce using rule 27 (exp -> NUMBER .)
+    MINUS           reduce using rule 27 (exp -> NUMBER .)
+    TIMES           reduce using rule 27 (exp -> NUMBER .)
+    DIVIDE          reduce using rule 27 (exp -> NUMBER .)
+    LESSEQUAL       reduce using rule 27 (exp -> NUMBER .)
+    GREATEREQUAL    reduce using rule 27 (exp -> NUMBER .)
+    LESS            reduce using rule 27 (exp -> NUMBER .)
+    GREATER         reduce using rule 27 (exp -> NUMBER .)
+    EQUAL           reduce using rule 27 (exp -> NUMBER .)
+    NOTEQUAL        reduce using rule 27 (exp -> NUMBER .)
+    ID              reduce using rule 27 (exp -> NUMBER .)
+    FUNCTION        reduce using rule 27 (exp -> NUMBER .)
+    WHILE           reduce using rule 27 (exp -> NUMBER .)
+    IF              reduce using rule 27 (exp -> NUMBER .)
+    RETURN          reduce using rule 27 (exp -> NUMBER .)
+    DO              reduce using rule 27 (exp -> NUMBER .)
+    FOR             reduce using rule 27 (exp -> NUMBER .)
+    PRINT           reduce using rule 27 (exp -> NUMBER .)
+    {               reduce using rule 27 (exp -> NUMBER .)
+    $end            reduce using rule 27 (exp -> NUMBER .)
+    END             reduce using rule 27 (exp -> NUMBER .)
+    }               reduce using rule 27 (exp -> NUMBER .)
+    ELSE            reduce using rule 27 (exp -> NUMBER .)
+    ,               reduce using rule 27 (exp -> NUMBER .)
+    )               reduce using rule 27 (exp -> NUMBER .)
+
+
+state 24
+
+    (28) exp -> ID .
+    (41) exp -> ID . ( actual_arg_exp )
+
+    PLUS            reduce using rule 28 (exp -> ID .)
+    MINUS           reduce using rule 28 (exp -> ID .)
+    TIMES           reduce using rule 28 (exp -> ID .)
+    DIVIDE          reduce using rule 28 (exp -> ID .)
+    LESSEQUAL       reduce using rule 28 (exp -> ID .)
+    GREATEREQUAL    reduce using rule 28 (exp -> ID .)
+    LESS            reduce using rule 28 (exp -> ID .)
+    GREATER         reduce using rule 28 (exp -> ID .)
+    EQUAL           reduce using rule 28 (exp -> ID .)
+    NOTEQUAL        reduce using rule 28 (exp -> ID .)
+    ID              reduce using rule 28 (exp -> ID .)
+    FUNCTION        reduce using rule 28 (exp -> ID .)
+    WHILE           reduce using rule 28 (exp -> ID .)
+    IF              reduce using rule 28 (exp -> ID .)
+    RETURN          reduce using rule 28 (exp -> ID .)
+    DO              reduce using rule 28 (exp -> ID .)
+    FOR             reduce using rule 28 (exp -> ID .)
+    PRINT           reduce using rule 28 (exp -> ID .)
+    {               reduce using rule 28 (exp -> ID .)
+    $end            reduce using rule 28 (exp -> ID .)
+    END             reduce using rule 28 (exp -> ID .)
+    }               reduce using rule 28 (exp -> ID .)
+    ELSE            reduce using rule 28 (exp -> ID .)
+    ,               reduce using rule 28 (exp -> ID .)
+    )               reduce using rule 28 (exp -> ID .)
+    (               shift and go to state 52
+
+
+state 25
+
+    (39) exp -> MINUS . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 53
+
+state 26
+
+    (40) exp -> ( . exp )
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 54
+
+state 27
+
+    (11) command -> DO command_list . END
+
+    END             shift and go to state 55
+
+
+state 28
+
+    (12) command -> FOR command . , exp command
+
+    ,               shift and go to state 56
+
+
+state 29
+
+    (13) command -> PRINT ( . exp )
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 57
+
+state 30
+
+    (14) command -> { command_list . }
+
+    }               shift and go to state 58
+
+
+state 31
+
+    (4) command -> ID = exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    ID              reduce using rule 4 (command -> ID = exp .)
+    FUNCTION        reduce using rule 4 (command -> ID = exp .)
+    WHILE           reduce using rule 4 (command -> ID = exp .)
+    IF              reduce using rule 4 (command -> ID = exp .)
+    RETURN          reduce using rule 4 (command -> ID = exp .)
+    DO              reduce using rule 4 (command -> ID = exp .)
+    FOR             reduce using rule 4 (command -> ID = exp .)
+    PRINT           reduce using rule 4 (command -> ID = exp .)
+    {               reduce using rule 4 (command -> ID = exp .)
+    $end            reduce using rule 4 (command -> ID = exp .)
+    END             reduce using rule 4 (command -> ID = exp .)
+    }               reduce using rule 4 (command -> ID = exp .)
+    ELSE            reduce using rule 4 (command -> ID = exp .)
+    ,               reduce using rule 4 (command -> ID = exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 32
+
+    (7) command -> ID ( actual_arg_exp . )
+
+    )               shift and go to state 59
+
+
+state 33
+
+    (15) actual_arg_exp -> actual_args .
+
+    )               reduce using rule 15 (actual_arg_exp -> actual_args .)
+
+
+state 34
+
+    (16) actual_arg_exp -> empty .
+
+    )               reduce using rule 16 (actual_arg_exp -> empty .)
+
+
+state 35
+
+    (17) actual_args -> exp . , actual_args
+    (18) actual_args -> exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    ,               shift and go to state 60
+    )               reduce using rule 18 (actual_args -> exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 36
+
+    (5) command -> FUNCTION ID ( . explist ) command_list END
+    (21) explist -> . lexp
+    (22) explist -> . empty
+    (23) lexp -> . ID
+    (24) lexp -> . ID , lexp
+    (42) empty -> .
+
+    ID              shift and go to state 61
+    )               reduce using rule 42 (empty -> .)
+
+    explist                        shift and go to state 62
+    lexp                           shift and go to state 63
+    empty                          shift and go to state 64
+
+state 37
+
+    (6) command -> FUNCTION ID expassign .
+
+    ID              reduce using rule 6 (command -> FUNCTION ID expassign .)
+    FUNCTION        reduce using rule 6 (command -> FUNCTION ID expassign .)
+    WHILE           reduce using rule 6 (command -> FUNCTION ID expassign .)
+    IF              reduce using rule 6 (command -> FUNCTION ID expassign .)
+    RETURN          reduce using rule 6 (command -> FUNCTION ID expassign .)
+    DO              reduce using rule 6 (command -> FUNCTION ID expassign .)
+    FOR             reduce using rule 6 (command -> FUNCTION ID expassign .)
+    PRINT           reduce using rule 6 (command -> FUNCTION ID expassign .)
+    {               reduce using rule 6 (command -> FUNCTION ID expassign .)
+    $end            reduce using rule 6 (command -> FUNCTION ID expassign .)
+    END             reduce using rule 6 (command -> FUNCTION ID expassign .)
+    }               reduce using rule 6 (command -> FUNCTION ID expassign .)
+    ELSE            reduce using rule 6 (command -> FUNCTION ID expassign .)
+    ,               reduce using rule 6 (command -> FUNCTION ID expassign .)
+
+
+state 38
+
+    (19) expassign -> empty .
+
+    ID              reduce using rule 19 (expassign -> empty .)
+    FUNCTION        reduce using rule 19 (expassign -> empty .)
+    WHILE           reduce using rule 19 (expassign -> empty .)
+    IF              reduce using rule 19 (expassign -> empty .)
+    RETURN          reduce using rule 19 (expassign -> empty .)
+    DO              reduce using rule 19 (expassign -> empty .)
+    FOR             reduce using rule 19 (expassign -> empty .)
+    PRINT           reduce using rule 19 (expassign -> empty .)
+    {               reduce using rule 19 (expassign -> empty .)
+    $end            reduce using rule 19 (expassign -> empty .)
+    END             reduce using rule 19 (expassign -> empty .)
+    }               reduce using rule 19 (expassign -> empty .)
+    ELSE            reduce using rule 19 (expassign -> empty .)
+    ,               reduce using rule 19 (expassign -> empty .)
+
+
+state 39
+
+    (20) expassign -> = . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 65
+
+state 40
+
+    (8) command -> WHILE ( exp . ) command
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    )               shift and go to state 66
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 41
+
+    (9) command -> IF ( exp . ) THEN command_list ELSE command_list END
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    )               shift and go to state 67
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 42
+
+    (29) exp -> exp PLUS . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 68
+
+state 43
+
+    (30) exp -> exp MINUS . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 69
+
+state 44
+
+    (31) exp -> exp TIMES . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 70
+
+state 45
+
+    (32) exp -> exp DIVIDE . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 71
+
+state 46
+
+    (33) exp -> exp LESSEQUAL . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 72
+
+state 47
+
+    (34) exp -> exp GREATEREQUAL . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 73
+
+state 48
+
+    (35) exp -> exp LESS . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 74
+
+state 49
+
+    (36) exp -> exp GREATER . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 75
+
+state 50
+
+    (37) exp -> exp EQUAL . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 76
+
+state 51
+
+    (38) exp -> exp NOTEQUAL . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 77
+
+state 52
+
+    (41) exp -> ID ( . actual_arg_exp )
+    (15) actual_arg_exp -> . actual_args
+    (16) actual_arg_exp -> . empty
+    (17) actual_args -> . exp , actual_args
+    (18) actual_args -> . exp
+    (42) empty -> .
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    )               reduce using rule 42 (empty -> .)
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    actual_arg_exp                 shift and go to state 78
+    actual_args                    shift and go to state 33
+    empty                          shift and go to state 34
+    exp                            shift and go to state 35
+
+state 53
+
+    (39) exp -> MINUS exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    PLUS            reduce using rule 39 (exp -> MINUS exp .)
+    MINUS           reduce using rule 39 (exp -> MINUS exp .)
+    TIMES           reduce using rule 39 (exp -> MINUS exp .)
+    DIVIDE          reduce using rule 39 (exp -> MINUS exp .)
+    LESSEQUAL       reduce using rule 39 (exp -> MINUS exp .)
+    GREATEREQUAL    reduce using rule 39 (exp -> MINUS exp .)
+    LESS            reduce using rule 39 (exp -> MINUS exp .)
+    GREATER         reduce using rule 39 (exp -> MINUS exp .)
+    EQUAL           reduce using rule 39 (exp -> MINUS exp .)
+    NOTEQUAL        reduce using rule 39 (exp -> MINUS exp .)
+    ID              reduce using rule 39 (exp -> MINUS exp .)
+    FUNCTION        reduce using rule 39 (exp -> MINUS exp .)
+    WHILE           reduce using rule 39 (exp -> MINUS exp .)
+    IF              reduce using rule 39 (exp -> MINUS exp .)
+    RETURN          reduce using rule 39 (exp -> MINUS exp .)
+    DO              reduce using rule 39 (exp -> MINUS exp .)
+    FOR             reduce using rule 39 (exp -> MINUS exp .)
+    PRINT           reduce using rule 39 (exp -> MINUS exp .)
+    {               reduce using rule 39 (exp -> MINUS exp .)
+    $end            reduce using rule 39 (exp -> MINUS exp .)
+    END             reduce using rule 39 (exp -> MINUS exp .)
+    }               reduce using rule 39 (exp -> MINUS exp .)
+    ELSE            reduce using rule 39 (exp -> MINUS exp .)
+    ,               reduce using rule 39 (exp -> MINUS exp .)
+    )               reduce using rule 39 (exp -> MINUS exp .)
+
+  ! PLUS            [ shift and go to state 42 ]
+  ! MINUS           [ shift and go to state 43 ]
+  ! TIMES           [ shift and go to state 44 ]
+  ! DIVIDE          [ shift and go to state 45 ]
+  ! LESSEQUAL       [ shift and go to state 46 ]
+  ! GREATEREQUAL    [ shift and go to state 47 ]
+  ! LESS            [ shift and go to state 48 ]
+  ! GREATER         [ shift and go to state 49 ]
+  ! EQUAL           [ shift and go to state 50 ]
+  ! NOTEQUAL        [ shift and go to state 51 ]
+
+
+state 54
+
+    (40) exp -> ( exp . )
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    )               shift and go to state 79
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 55
+
+    (11) command -> DO command_list END .
+
+    ID              reduce using rule 11 (command -> DO command_list END .)
+    FUNCTION        reduce using rule 11 (command -> DO command_list END .)
+    WHILE           reduce using rule 11 (command -> DO command_list END .)
+    IF              reduce using rule 11 (command -> DO command_list END .)
+    RETURN          reduce using rule 11 (command -> DO command_list END .)
+    DO              reduce using rule 11 (command -> DO command_list END .)
+    FOR             reduce using rule 11 (command -> DO command_list END .)
+    PRINT           reduce using rule 11 (command -> DO command_list END .)
+    {               reduce using rule 11 (command -> DO command_list END .)
+    $end            reduce using rule 11 (command -> DO command_list END .)
+    END             reduce using rule 11 (command -> DO command_list END .)
+    }               reduce using rule 11 (command -> DO command_list END .)
+    ELSE            reduce using rule 11 (command -> DO command_list END .)
+    ,               reduce using rule 11 (command -> DO command_list END .)
+
+
+state 56
+
+    (12) command -> FOR command , . exp command
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 80
+
+state 57
+
+    (13) command -> PRINT ( exp . )
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    )               shift and go to state 81
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 58
+
+    (14) command -> { command_list } .
+
+    ID              reduce using rule 14 (command -> { command_list } .)
+    FUNCTION        reduce using rule 14 (command -> { command_list } .)
+    WHILE           reduce using rule 14 (command -> { command_list } .)
+    IF              reduce using rule 14 (command -> { command_list } .)
+    RETURN          reduce using rule 14 (command -> { command_list } .)
+    DO              reduce using rule 14 (command -> { command_list } .)
+    FOR             reduce using rule 14 (command -> { command_list } .)
+    PRINT           reduce using rule 14 (command -> { command_list } .)
+    {               reduce using rule 14 (command -> { command_list } .)
+    $end            reduce using rule 14 (command -> { command_list } .)
+    END             reduce using rule 14 (command -> { command_list } .)
+    }               reduce using rule 14 (command -> { command_list } .)
+    ELSE            reduce using rule 14 (command -> { command_list } .)
+    ,               reduce using rule 14 (command -> { command_list } .)
+
+
+state 59
+
+    (7) command -> ID ( actual_arg_exp ) .
+
+    ID              reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    FUNCTION        reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    WHILE           reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    IF              reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    RETURN          reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    DO              reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    FOR             reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    PRINT           reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    {               reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    $end            reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    END             reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    }               reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    ELSE            reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+    ,               reduce using rule 7 (command -> ID ( actual_arg_exp ) .)
+
+
+state 60
+
+    (17) actual_args -> exp , . actual_args
+    (17) actual_args -> . exp , actual_args
+    (18) actual_args -> . exp
+    (27) exp -> . NUMBER
+    (28) exp -> . ID
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp LESSEQUAL exp
+    (34) exp -> . exp GREATEREQUAL exp
+    (35) exp -> . exp LESS exp
+    (36) exp -> . exp GREATER exp
+    (37) exp -> . exp EQUAL exp
+    (38) exp -> . exp NOTEQUAL exp
+    (39) exp -> . MINUS exp
+    (40) exp -> . ( exp )
+    (41) exp -> . ID ( actual_arg_exp )
+
+    NUMBER          shift and go to state 23
+    ID              shift and go to state 24
+    MINUS           shift and go to state 25
+    (               shift and go to state 26
+
+    exp                            shift and go to state 35
+    actual_args                    shift and go to state 82
+
+state 61
+
+    (23) lexp -> ID .
+    (24) lexp -> ID . , lexp
+
+    )               reduce using rule 23 (lexp -> ID .)
+    ,               shift and go to state 83
+
+
+state 62
+
+    (5) command -> FUNCTION ID ( explist . ) command_list END
+
+    )               shift and go to state 84
+
+
+state 63
+
+    (21) explist -> lexp .
+
+    )               reduce using rule 21 (explist -> lexp .)
+
+
+state 64
+
+    (22) explist -> empty .
+
+    )               reduce using rule 22 (explist -> empty .)
+
+
+state 65
+
+    (20) expassign -> = exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    ID              reduce using rule 20 (expassign -> = exp .)
+    FUNCTION        reduce using rule 20 (expassign -> = exp .)
+    WHILE           reduce using rule 20 (expassign -> = exp .)
+    IF              reduce using rule 20 (expassign -> = exp .)
+    RETURN          reduce using rule 20 (expassign -> = exp .)
+    DO              reduce using rule 20 (expassign -> = exp .)
+    FOR             reduce using rule 20 (expassign -> = exp .)
+    PRINT           reduce using rule 20 (expassign -> = exp .)
+    {               reduce using rule 20 (expassign -> = exp .)
+    $end            reduce using rule 20 (expassign -> = exp .)
+    END             reduce using rule 20 (expassign -> = exp .)
+    }               reduce using rule 20 (expassign -> = exp .)
+    ELSE            reduce using rule 20 (expassign -> = exp .)
+    ,               reduce using rule 20 (expassign -> = exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+
+state 66
+
+    (8) command -> WHILE ( exp ) . command
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+
+    command                        shift and go to state 85
+
+state 67
+
+    (9) command -> IF ( exp ) . THEN command_list ELSE command_list END
+
+    THEN            shift and go to state 86
+
+
+state 68
+
+    (29) exp -> exp PLUS exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    PLUS            reduce using rule 29 (exp -> exp PLUS exp .)
+    MINUS           reduce using rule 29 (exp -> exp PLUS exp .)
+    LESSEQUAL       reduce using rule 29 (exp -> exp PLUS exp .)
+    GREATEREQUAL    reduce using rule 29 (exp -> exp PLUS exp .)
+    LESS            reduce using rule 29 (exp -> exp PLUS exp .)
+    GREATER         reduce using rule 29 (exp -> exp PLUS exp .)
+    EQUAL           reduce using rule 29 (exp -> exp PLUS exp .)
+    NOTEQUAL        reduce using rule 29 (exp -> exp PLUS exp .)
+    ID              reduce using rule 29 (exp -> exp PLUS exp .)
+    FUNCTION        reduce using rule 29 (exp -> exp PLUS exp .)
+    WHILE           reduce using rule 29 (exp -> exp PLUS exp .)
+    IF              reduce using rule 29 (exp -> exp PLUS exp .)
+    RETURN          reduce using rule 29 (exp -> exp PLUS exp .)
+    DO              reduce using rule 29 (exp -> exp PLUS exp .)
+    FOR             reduce using rule 29 (exp -> exp PLUS exp .)
+    PRINT           reduce using rule 29 (exp -> exp PLUS exp .)
+    {               reduce using rule 29 (exp -> exp PLUS exp .)
+    $end            reduce using rule 29 (exp -> exp PLUS exp .)
+    END             reduce using rule 29 (exp -> exp PLUS exp .)
+    }               reduce using rule 29 (exp -> exp PLUS exp .)
+    ELSE            reduce using rule 29 (exp -> exp PLUS exp .)
+    ,               reduce using rule 29 (exp -> exp PLUS exp .)
+    )               reduce using rule 29 (exp -> exp PLUS exp .)
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+
+  ! TIMES           [ reduce using rule 29 (exp -> exp PLUS exp .) ]
+  ! DIVIDE          [ reduce using rule 29 (exp -> exp PLUS exp .) ]
+  ! PLUS            [ shift and go to state 42 ]
+  ! MINUS           [ shift and go to state 43 ]
+  ! LESSEQUAL       [ shift and go to state 46 ]
+  ! GREATEREQUAL    [ shift and go to state 47 ]
+  ! LESS            [ shift and go to state 48 ]
+  ! GREATER         [ shift and go to state 49 ]
+  ! EQUAL           [ shift and go to state 50 ]
+  ! NOTEQUAL        [ shift and go to state 51 ]
+
+
+state 69
+
+    (30) exp -> exp MINUS exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    PLUS            reduce using rule 30 (exp -> exp MINUS exp .)
+    MINUS           reduce using rule 30 (exp -> exp MINUS exp .)
+    LESSEQUAL       reduce using rule 30 (exp -> exp MINUS exp .)
+    GREATEREQUAL    reduce using rule 30 (exp -> exp MINUS exp .)
+    LESS            reduce using rule 30 (exp -> exp MINUS exp .)
+    GREATER         reduce using rule 30 (exp -> exp MINUS exp .)
+    EQUAL           reduce using rule 30 (exp -> exp MINUS exp .)
+    NOTEQUAL        reduce using rule 30 (exp -> exp MINUS exp .)
+    ID              reduce using rule 30 (exp -> exp MINUS exp .)
+    FUNCTION        reduce using rule 30 (exp -> exp MINUS exp .)
+    WHILE           reduce using rule 30 (exp -> exp MINUS exp .)
+    IF              reduce using rule 30 (exp -> exp MINUS exp .)
+    RETURN          reduce using rule 30 (exp -> exp MINUS exp .)
+    DO              reduce using rule 30 (exp -> exp MINUS exp .)
+    FOR             reduce using rule 30 (exp -> exp MINUS exp .)
+    PRINT           reduce using rule 30 (exp -> exp MINUS exp .)
+    {               reduce using rule 30 (exp -> exp MINUS exp .)
+    $end            reduce using rule 30 (exp -> exp MINUS exp .)
+    END             reduce using rule 30 (exp -> exp MINUS exp .)
+    }               reduce using rule 30 (exp -> exp MINUS exp .)
+    ELSE            reduce using rule 30 (exp -> exp MINUS exp .)
+    ,               reduce using rule 30 (exp -> exp MINUS exp .)
+    )               reduce using rule 30 (exp -> exp MINUS exp .)
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+
+  ! TIMES           [ reduce using rule 30 (exp -> exp MINUS exp .) ]
+  ! DIVIDE          [ reduce using rule 30 (exp -> exp MINUS exp .) ]
+  ! PLUS            [ shift and go to state 42 ]
+  ! MINUS           [ shift and go to state 43 ]
+  ! LESSEQUAL       [ shift and go to state 46 ]
+  ! GREATEREQUAL    [ shift and go to state 47 ]
+  ! LESS            [ shift and go to state 48 ]
+  ! GREATER         [ shift and go to state 49 ]
+  ! EQUAL           [ shift and go to state 50 ]
+  ! NOTEQUAL        [ shift and go to state 51 ]
+
+
+state 70
+
+    (31) exp -> exp TIMES exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    PLUS            reduce using rule 31 (exp -> exp TIMES exp .)
+    MINUS           reduce using rule 31 (exp -> exp TIMES exp .)
+    TIMES           reduce using rule 31 (exp -> exp TIMES exp .)
+    DIVIDE          reduce using rule 31 (exp -> exp TIMES exp .)
+    LESSEQUAL       reduce using rule 31 (exp -> exp TIMES exp .)
+    GREATEREQUAL    reduce using rule 31 (exp -> exp TIMES exp .)
+    LESS            reduce using rule 31 (exp -> exp TIMES exp .)
+    GREATER         reduce using rule 31 (exp -> exp TIMES exp .)
+    EQUAL           reduce using rule 31 (exp -> exp TIMES exp .)
+    NOTEQUAL        reduce using rule 31 (exp -> exp TIMES exp .)
+    ID              reduce using rule 31 (exp -> exp TIMES exp .)
+    FUNCTION        reduce using rule 31 (exp -> exp TIMES exp .)
+    WHILE           reduce using rule 31 (exp -> exp TIMES exp .)
+    IF              reduce using rule 31 (exp -> exp TIMES exp .)
+    RETURN          reduce using rule 31 (exp -> exp TIMES exp .)
+    DO              reduce using rule 31 (exp -> exp TIMES exp .)
+    FOR             reduce using rule 31 (exp -> exp TIMES exp .)
+    PRINT           reduce using rule 31 (exp -> exp TIMES exp .)
+    {               reduce using rule 31 (exp -> exp TIMES exp .)
+    $end            reduce using rule 31 (exp -> exp TIMES exp .)
+    END             reduce using rule 31 (exp -> exp TIMES exp .)
+    }               reduce using rule 31 (exp -> exp TIMES exp .)
+    ELSE            reduce using rule 31 (exp -> exp TIMES exp .)
+    ,               reduce using rule 31 (exp -> exp TIMES exp .)
+    )               reduce using rule 31 (exp -> exp TIMES exp .)
+
+  ! PLUS            [ shift and go to state 42 ]
+  ! MINUS           [ shift and go to state 43 ]
+  ! TIMES           [ shift and go to state 44 ]
+  ! DIVIDE          [ shift and go to state 45 ]
+  ! LESSEQUAL       [ shift and go to state 46 ]
+  ! GREATEREQUAL    [ shift and go to state 47 ]
+  ! LESS            [ shift and go to state 48 ]
+  ! GREATER         [ shift and go to state 49 ]
+  ! EQUAL           [ shift and go to state 50 ]
+  ! NOTEQUAL        [ shift and go to state 51 ]
+
+
+state 71
+
+    (32) exp -> exp DIVIDE exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+    PLUS            reduce using rule 32 (exp -> exp DIVIDE exp .)
+    MINUS           reduce using rule 32 (exp -> exp DIVIDE exp .)
+    TIMES           reduce using rule 32 (exp -> exp DIVIDE exp .)
+    DIVIDE          reduce using rule 32 (exp -> exp DIVIDE exp .)
+    LESSEQUAL       reduce using rule 32 (exp -> exp DIVIDE exp .)
+    GREATEREQUAL    reduce using rule 32 (exp -> exp DIVIDE exp .)
+    LESS            reduce using rule 32 (exp -> exp DIVIDE exp .)
+    GREATER         reduce using rule 32 (exp -> exp DIVIDE exp .)
+    EQUAL           reduce using rule 32 (exp -> exp DIVIDE exp .)
+    NOTEQUAL        reduce using rule 32 (exp -> exp DIVIDE exp .)
+    ID              reduce using rule 32 (exp -> exp DIVIDE exp .)
+    FUNCTION        reduce using rule 32 (exp -> exp DIVIDE exp .)
+    WHILE           reduce using rule 32 (exp -> exp DIVIDE exp .)
+    IF              reduce using rule 32 (exp -> exp DIVIDE exp .)
+    RETURN          reduce using rule 32 (exp -> exp DIVIDE exp .)
+    DO              reduce using rule 32 (exp -> exp DIVIDE exp .)
+    FOR             reduce using rule 32 (exp -> exp DIVIDE exp .)
+    PRINT           reduce using rule 32 (exp -> exp DIVIDE exp .)
+    {               reduce using rule 32 (exp -> exp DIVIDE exp .)
+    $end            reduce using rule 32 (exp -> exp DIVIDE exp .)
+    END             reduce using rule 32 (exp -> exp DIVIDE exp .)
+    }               reduce using rule 32 (exp -> exp DIVIDE exp .)
+    ELSE            reduce using rule 32 (exp -> exp DIVIDE exp .)
+    ,               reduce using rule 32 (exp -> exp DIVIDE exp .)
+    )               reduce using rule 32 (exp -> exp DIVIDE exp .)
+
+  ! PLUS            [ shift and go to state 42 ]
+  ! MINUS           [ shift and go to state 43 ]
+  ! TIMES           [ shift and go to state 44 ]
+  ! DIVIDE          [ shift and go to state 45 ]
+  ! LESSEQUAL       [ shift and go to state 46 ]
+  ! GREATEREQUAL    [ shift and go to state 47 ]
+  ! LESS            [ shift and go to state 48 ]
+  ! GREATER         [ shift and go to state 49 ]
+  ! EQUAL           [ shift and go to state 50 ]
+  ! NOTEQUAL        [ shift and go to state 51 ]
+
+
+state 72
+
+    (33) exp -> exp LESSEQUAL exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+    ID              reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    FUNCTION        reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    WHILE           reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    IF              reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    RETURN          reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    DO              reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    FOR             reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    PRINT           reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    {               reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    $end            reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    END             reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    }               reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    ELSE            reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    ,               reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    )               reduce using rule 33 (exp -> exp LESSEQUAL exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+  ! PLUS            [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! MINUS           [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! TIMES           [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! DIVIDE          [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! LESSEQUAL       [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! GREATEREQUAL    [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! LESS            [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! GREATER         [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! EQUAL           [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+  ! NOTEQUAL        [ reduce using rule 33 (exp -> exp LESSEQUAL exp .) ]
+
+
+state 73
+
+    (34) exp -> exp GREATEREQUAL exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+    ID              reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    FUNCTION        reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    WHILE           reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    IF              reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    RETURN          reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    DO              reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    FOR             reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    PRINT           reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    {               reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    $end            reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    END             reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    }               reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    ELSE            reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    ,               reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    )               reduce using rule 34 (exp -> exp GREATEREQUAL exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+  ! PLUS            [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! MINUS           [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! TIMES           [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! DIVIDE          [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! LESSEQUAL       [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! GREATEREQUAL    [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! LESS            [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! GREATER         [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! EQUAL           [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+  ! NOTEQUAL        [ reduce using rule 34 (exp -> exp GREATEREQUAL exp .) ]
+
+
+state 74
+
+    (35) exp -> exp LESS exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+    ID              reduce using rule 35 (exp -> exp LESS exp .)
+    FUNCTION        reduce using rule 35 (exp -> exp LESS exp .)
+    WHILE           reduce using rule 35 (exp -> exp LESS exp .)
+    IF              reduce using rule 35 (exp -> exp LESS exp .)
+    RETURN          reduce using rule 35 (exp -> exp LESS exp .)
+    DO              reduce using rule 35 (exp -> exp LESS exp .)
+    FOR             reduce using rule 35 (exp -> exp LESS exp .)
+    PRINT           reduce using rule 35 (exp -> exp LESS exp .)
+    {               reduce using rule 35 (exp -> exp LESS exp .)
+    $end            reduce using rule 35 (exp -> exp LESS exp .)
+    END             reduce using rule 35 (exp -> exp LESS exp .)
+    }               reduce using rule 35 (exp -> exp LESS exp .)
+    ELSE            reduce using rule 35 (exp -> exp LESS exp .)
+    ,               reduce using rule 35 (exp -> exp LESS exp .)
+    )               reduce using rule 35 (exp -> exp LESS exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+  ! PLUS            [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! MINUS           [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! TIMES           [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! DIVIDE          [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! LESSEQUAL       [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! GREATEREQUAL    [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! LESS            [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! GREATER         [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! EQUAL           [ reduce using rule 35 (exp -> exp LESS exp .) ]
+  ! NOTEQUAL        [ reduce using rule 35 (exp -> exp LESS exp .) ]
+
+
+state 75
+
+    (36) exp -> exp GREATER exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+    ID              reduce using rule 36 (exp -> exp GREATER exp .)
+    FUNCTION        reduce using rule 36 (exp -> exp GREATER exp .)
+    WHILE           reduce using rule 36 (exp -> exp GREATER exp .)
+    IF              reduce using rule 36 (exp -> exp GREATER exp .)
+    RETURN          reduce using rule 36 (exp -> exp GREATER exp .)
+    DO              reduce using rule 36 (exp -> exp GREATER exp .)
+    FOR             reduce using rule 36 (exp -> exp GREATER exp .)
+    PRINT           reduce using rule 36 (exp -> exp GREATER exp .)
+    {               reduce using rule 36 (exp -> exp GREATER exp .)
+    $end            reduce using rule 36 (exp -> exp GREATER exp .)
+    END             reduce using rule 36 (exp -> exp GREATER exp .)
+    }               reduce using rule 36 (exp -> exp GREATER exp .)
+    ELSE            reduce using rule 36 (exp -> exp GREATER exp .)
+    ,               reduce using rule 36 (exp -> exp GREATER exp .)
+    )               reduce using rule 36 (exp -> exp GREATER exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+  ! PLUS            [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! MINUS           [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! TIMES           [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! DIVIDE          [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! LESSEQUAL       [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! GREATEREQUAL    [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! LESS            [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! GREATER         [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! EQUAL           [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+  ! NOTEQUAL        [ reduce using rule 36 (exp -> exp GREATER exp .) ]
+
+
+state 76
+
+    (37) exp -> exp EQUAL exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+    ID              reduce using rule 37 (exp -> exp EQUAL exp .)
+    FUNCTION        reduce using rule 37 (exp -> exp EQUAL exp .)
+    WHILE           reduce using rule 37 (exp -> exp EQUAL exp .)
+    IF              reduce using rule 37 (exp -> exp EQUAL exp .)
+    RETURN          reduce using rule 37 (exp -> exp EQUAL exp .)
+    DO              reduce using rule 37 (exp -> exp EQUAL exp .)
+    FOR             reduce using rule 37 (exp -> exp EQUAL exp .)
+    PRINT           reduce using rule 37 (exp -> exp EQUAL exp .)
+    {               reduce using rule 37 (exp -> exp EQUAL exp .)
+    $end            reduce using rule 37 (exp -> exp EQUAL exp .)
+    END             reduce using rule 37 (exp -> exp EQUAL exp .)
+    }               reduce using rule 37 (exp -> exp EQUAL exp .)
+    ELSE            reduce using rule 37 (exp -> exp EQUAL exp .)
+    ,               reduce using rule 37 (exp -> exp EQUAL exp .)
+    )               reduce using rule 37 (exp -> exp EQUAL exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+  ! PLUS            [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! MINUS           [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! TIMES           [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! DIVIDE          [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! LESSEQUAL       [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! GREATEREQUAL    [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! LESS            [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! GREATER         [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! EQUAL           [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+  ! NOTEQUAL        [ reduce using rule 37 (exp -> exp EQUAL exp .) ]
+
+
+state 77
+
+    (38) exp -> exp NOTEQUAL exp .
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+    ID              reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    FUNCTION        reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    WHILE           reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    IF              reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    RETURN          reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    DO              reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    FOR             reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    PRINT           reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    {               reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    $end            reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    END             reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    }               reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    ELSE            reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    ,               reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    )               reduce using rule 38 (exp -> exp NOTEQUAL exp .)
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+
+  ! PLUS            [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! MINUS           [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! TIMES           [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! DIVIDE          [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! LESSEQUAL       [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! GREATEREQUAL    [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! LESS            [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! GREATER         [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! EQUAL           [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+  ! NOTEQUAL        [ reduce using rule 38 (exp -> exp NOTEQUAL exp .) ]
+
+
+state 78
+
+    (41) exp -> ID ( actual_arg_exp . )
+
+    )               shift and go to state 87
+
+
+state 79
+
+    (40) exp -> ( exp ) .
+
+    PLUS            reduce using rule 40 (exp -> ( exp ) .)
+    MINUS           reduce using rule 40 (exp -> ( exp ) .)
+    TIMES           reduce using rule 40 (exp -> ( exp ) .)
+    DIVIDE          reduce using rule 40 (exp -> ( exp ) .)
+    LESSEQUAL       reduce using rule 40 (exp -> ( exp ) .)
+    GREATEREQUAL    reduce using rule 40 (exp -> ( exp ) .)
+    LESS            reduce using rule 40 (exp -> ( exp ) .)
+    GREATER         reduce using rule 40 (exp -> ( exp ) .)
+    EQUAL           reduce using rule 40 (exp -> ( exp ) .)
+    NOTEQUAL        reduce using rule 40 (exp -> ( exp ) .)
+    ID              reduce using rule 40 (exp -> ( exp ) .)
+    FUNCTION        reduce using rule 40 (exp -> ( exp ) .)
+    WHILE           reduce using rule 40 (exp -> ( exp ) .)
+    IF              reduce using rule 40 (exp -> ( exp ) .)
+    RETURN          reduce using rule 40 (exp -> ( exp ) .)
+    DO              reduce using rule 40 (exp -> ( exp ) .)
+    FOR             reduce using rule 40 (exp -> ( exp ) .)
+    PRINT           reduce using rule 40 (exp -> ( exp ) .)
+    {               reduce using rule 40 (exp -> ( exp ) .)
+    $end            reduce using rule 40 (exp -> ( exp ) .)
+    END             reduce using rule 40 (exp -> ( exp ) .)
+    }               reduce using rule 40 (exp -> ( exp ) .)
+    ELSE            reduce using rule 40 (exp -> ( exp ) .)
+    ,               reduce using rule 40 (exp -> ( exp ) .)
+    )               reduce using rule 40 (exp -> ( exp ) .)
+
+
+state 80
+
+    (12) command -> FOR command , exp . command
+    (29) exp -> exp . PLUS exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . TIMES exp
+    (32) exp -> exp . DIVIDE exp
+    (33) exp -> exp . LESSEQUAL exp
+    (34) exp -> exp . GREATEREQUAL exp
+    (35) exp -> exp . LESS exp
+    (36) exp -> exp . GREATER exp
+    (37) exp -> exp . EQUAL exp
+    (38) exp -> exp . NOTEQUAL exp
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+
+    PLUS            shift and go to state 42
+    MINUS           shift and go to state 43
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    LESSEQUAL       shift and go to state 46
+    GREATEREQUAL    shift and go to state 47
+    LESS            shift and go to state 48
+    GREATER         shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+
+    command                        shift and go to state 88
+
+state 81
+
+    (13) command -> PRINT ( exp ) .
+
+    ID              reduce using rule 13 (command -> PRINT ( exp ) .)
+    FUNCTION        reduce using rule 13 (command -> PRINT ( exp ) .)
+    WHILE           reduce using rule 13 (command -> PRINT ( exp ) .)
+    IF              reduce using rule 13 (command -> PRINT ( exp ) .)
+    RETURN          reduce using rule 13 (command -> PRINT ( exp ) .)
+    DO              reduce using rule 13 (command -> PRINT ( exp ) .)
+    FOR             reduce using rule 13 (command -> PRINT ( exp ) .)
+    PRINT           reduce using rule 13 (command -> PRINT ( exp ) .)
+    {               reduce using rule 13 (command -> PRINT ( exp ) .)
+    $end            reduce using rule 13 (command -> PRINT ( exp ) .)
+    END             reduce using rule 13 (command -> PRINT ( exp ) .)
+    }               reduce using rule 13 (command -> PRINT ( exp ) .)
+    ELSE            reduce using rule 13 (command -> PRINT ( exp ) .)
+    ,               reduce using rule 13 (command -> PRINT ( exp ) .)
+
+
+state 82
+
+    (17) actual_args -> exp , actual_args .
+
+    )               reduce using rule 17 (actual_args -> exp , actual_args .)
+
+
+state 83
+
+    (24) lexp -> ID , . lexp
+    (23) lexp -> . ID
+    (24) lexp -> . ID , lexp
+
+    ID              shift and go to state 61
+
+    lexp                           shift and go to state 89
+
+state 84
+
+    (5) command -> FUNCTION ID ( explist ) . command_list END
+    (2) command_list -> . command command_list
+    (3) command_list -> . empty
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+    (42) empty -> .
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+    END             reduce using rule 42 (empty -> .)
+
+    command_list                   shift and go to state 90
+    command                        shift and go to state 3
+    empty                          shift and go to state 4
+
+state 85
+
+    (8) command -> WHILE ( exp ) command .
+
+    ID              reduce using rule 8 (command -> WHILE ( exp ) command .)
+    FUNCTION        reduce using rule 8 (command -> WHILE ( exp ) command .)
+    WHILE           reduce using rule 8 (command -> WHILE ( exp ) command .)
+    IF              reduce using rule 8 (command -> WHILE ( exp ) command .)
+    RETURN          reduce using rule 8 (command -> WHILE ( exp ) command .)
+    DO              reduce using rule 8 (command -> WHILE ( exp ) command .)
+    FOR             reduce using rule 8 (command -> WHILE ( exp ) command .)
+    PRINT           reduce using rule 8 (command -> WHILE ( exp ) command .)
+    {               reduce using rule 8 (command -> WHILE ( exp ) command .)
+    $end            reduce using rule 8 (command -> WHILE ( exp ) command .)
+    END             reduce using rule 8 (command -> WHILE ( exp ) command .)
+    }               reduce using rule 8 (command -> WHILE ( exp ) command .)
+    ELSE            reduce using rule 8 (command -> WHILE ( exp ) command .)
+    ,               reduce using rule 8 (command -> WHILE ( exp ) command .)
+
+
+state 86
+
+    (9) command -> IF ( exp ) THEN . command_list ELSE command_list END
+    (2) command_list -> . command command_list
+    (3) command_list -> . empty
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+    (42) empty -> .
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+    ELSE            reduce using rule 42 (empty -> .)
+
+    command_list                   shift and go to state 91
+    command                        shift and go to state 3
+    empty                          shift and go to state 4
+
+state 87
+
+    (41) exp -> ID ( actual_arg_exp ) .
+
+    PLUS            reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    MINUS           reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    TIMES           reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    DIVIDE          reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    LESSEQUAL       reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    GREATEREQUAL    reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    LESS            reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    GREATER         reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    EQUAL           reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    NOTEQUAL        reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    ID              reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    FUNCTION        reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    WHILE           reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    IF              reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    RETURN          reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    DO              reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    FOR             reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    PRINT           reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    {               reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    $end            reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    END             reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    }               reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    ELSE            reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    ,               reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+    )               reduce using rule 41 (exp -> ID ( actual_arg_exp ) .)
+
+
+state 88
+
+    (12) command -> FOR command , exp command .
+
+    ID              reduce using rule 12 (command -> FOR command , exp command .)
+    FUNCTION        reduce using rule 12 (command -> FOR command , exp command .)
+    WHILE           reduce using rule 12 (command -> FOR command , exp command .)
+    IF              reduce using rule 12 (command -> FOR command , exp command .)
+    RETURN          reduce using rule 12 (command -> FOR command , exp command .)
+    DO              reduce using rule 12 (command -> FOR command , exp command .)
+    FOR             reduce using rule 12 (command -> FOR command , exp command .)
+    PRINT           reduce using rule 12 (command -> FOR command , exp command .)
+    {               reduce using rule 12 (command -> FOR command , exp command .)
+    $end            reduce using rule 12 (command -> FOR command , exp command .)
+    END             reduce using rule 12 (command -> FOR command , exp command .)
+    }               reduce using rule 12 (command -> FOR command , exp command .)
+    ELSE            reduce using rule 12 (command -> FOR command , exp command .)
+    ,               reduce using rule 12 (command -> FOR command , exp command .)
+
+
+state 89
+
+    (24) lexp -> ID , lexp .
+
+    )               reduce using rule 24 (lexp -> ID , lexp .)
+
+
+state 90
+
+    (5) command -> FUNCTION ID ( explist ) command_list . END
+
+    END             shift and go to state 92
+
+
+state 91
+
+    (9) command -> IF ( exp ) THEN command_list . ELSE command_list END
+
+    ELSE            shift and go to state 93
+
+
+state 92
+
+    (5) command -> FUNCTION ID ( explist ) command_list END .
+
+    ID              reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    FUNCTION        reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    WHILE           reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    IF              reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    RETURN          reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    DO              reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    FOR             reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    PRINT           reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    {               reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    $end            reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    END             reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    }               reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    ELSE            reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+    ,               reduce using rule 5 (command -> FUNCTION ID ( explist ) command_list END .)
+
+
+state 93
+
+    (9) command -> IF ( exp ) THEN command_list ELSE . command_list END
+    (2) command_list -> . command command_list
+    (3) command_list -> . empty
+    (4) command -> . ID = exp
+    (5) command -> . FUNCTION ID ( explist ) command_list END
+    (6) command -> . FUNCTION ID expassign
+    (7) command -> . ID ( actual_arg_exp )
+    (8) command -> . WHILE ( exp ) command
+    (9) command -> . IF ( exp ) THEN command_list ELSE command_list END
+    (10) command -> . RETURN exp_list
+    (11) command -> . DO command_list END
+    (12) command -> . FOR command , exp command
+    (13) command -> . PRINT ( exp )
+    (14) command -> . { command_list }
+    (42) empty -> .
+
+    ID              shift and go to state 5
+    FUNCTION        shift and go to state 6
+    WHILE           shift and go to state 7
+    IF              shift and go to state 8
+    RETURN          shift and go to state 9
+    DO              shift and go to state 10
+    FOR             shift and go to state 11
+    PRINT           shift and go to state 12
+    {               shift and go to state 13
+    END             reduce using rule 42 (empty -> .)
+
+    command_list                   shift and go to state 94
+    command                        shift and go to state 3
+    empty                          shift and go to state 4
+
+state 94
+
+    (9) command -> IF ( exp ) THEN command_list ELSE command_list . END
+
+    END             shift and go to state 95
+
+
+state 95
+
+    (9) command -> IF ( exp ) THEN command_list ELSE command_list END .
+
+    ID              reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    FUNCTION        reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    WHILE           reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    IF              reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    RETURN          reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    DO              reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    FOR             reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    PRINT           reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    {               reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    $end            reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    END             reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    }               reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    ELSE            reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+    ,               reduce using rule 9 (command -> IF ( exp ) THEN command_list ELSE command_list END .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ID in state 9 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 72 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 72 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 72 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 72 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 72 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 72 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 72 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 72 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 72 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 72 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 73 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 73 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 73 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 73 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 73 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 73 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 73 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 73 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 73 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 73 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 74 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 74 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 74 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 74 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 74 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 74 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 74 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 74 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 74 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 74 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 75 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 75 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 75 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 75 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 75 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 75 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 75 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 75 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 75 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 75 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 76 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 76 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 76 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 76 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 76 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 76 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 76 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 76 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 76 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 76 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 77 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 77 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 77 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 77 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 77 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 77 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 77 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 77 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 77 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 77 resolved as shift
