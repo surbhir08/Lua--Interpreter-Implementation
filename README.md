@@ -1,3 +1,3 @@
 # Lua- Interpreter Implementation
 
-Implemented Lua Interpreter in Python by Surbhi Rathore.
+Lua Interpreter implementation in Python by Surbhi Rathore.
